@@ -1,4 +1,4 @@
-import { PixelPainterStore } from "../stores/PixelPainterStore"
+import { PixelPainterStore, setCanvas } from "../stores/PixelPainterStore"
 
 type CellProps = {
   x: number;
@@ -8,9 +8,11 @@ type CellProps = {
 const Cell = ({ x, y }: CellProps) => {
 
   const state = PixelPainterStore.useState()
-
+  // add onclick and ondrag
   return (
-    <td className="w-6 h-6 cursor-pointer" style={{backgroundColor: state.canvas[y][x]}}>
+    <td className="w-6 h-6 cursor-pointer" style={{backgroundColor: state.canvas[y][x]}}
+    onClick = {() => {setCanvas(y,x)}}
+    onDrag = {() => {setCanvas(y,x)}}>
     </td>
   )
 }
